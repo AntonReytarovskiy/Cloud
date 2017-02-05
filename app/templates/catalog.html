@@ -1,2 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Catalog{% endblock %}
+{% block content %}
+    <div class="list col-md-5 col-md-offset-5">
+        <ul>
+            {% for file in files %}
+                <li><a href="{% url 'download' file %}">{{ file }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
