@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}File error{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'app/css/fileError.css' %}">
+{% endblock %}
+{% block content %}
+    <div>
+        <h2 class="error-text">File exists</h2>
+        <a class="error-link" href="{% url 'upload' %}">upload new file</a>
+    </div>
+{% endblock %}
