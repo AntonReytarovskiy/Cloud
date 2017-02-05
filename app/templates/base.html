@@ -21,7 +21,7 @@
             <li {% if request.path == upload_url %}class="active"{% endif %}><a href="{% url 'upload' %}"><i class="glyphicon glyphicon-cloud-upload"></i>Upload</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> ({{ request.user.username }})Logout</a></li>
         </ul>
     </div>
 </nav>
