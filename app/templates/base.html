@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/" class="brand-link"><img src="{% static 'app/images/cloud.png' %}" alt="img"> <span>Cloud</span></a>
+        </div>
+        <ul class="nav navbar-nav">
+            {% url 'upload' as upload_url %}
+            {% url 'catalog' as catalog_url %}
+            <li {% if request.path == catalog_url %}class="active"{% endif %}><a href="{% url 'catalog' %}"><i class="glyphicon glyphicon-folder-open"></i> Catalog</a></li>
+            <li {% if request.path == upload_url %}class="active"{% endif %}><a href="{% url 'upload' %}"><i class="glyphicon glyphicon-cloud-upload"></i>Upload</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container content">
+    {% block content %}{% endblock %}
+</div>
+{% block js %}
+{% endblock %}
+</body>
+</html>

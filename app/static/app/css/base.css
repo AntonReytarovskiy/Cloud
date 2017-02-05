@@ -1,0 +1,27 @@
+.navbar-header {
+    margin-top: 12px;
+    margin-right: 10px;
+}
+
+.navbar-header .brand-link {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.navbar-header .brand-link:hover {
+    color: brown;
+}
+
+.brand-link img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.brand-link span {
+    color: black;
+}
+
+a i {
+    margin-right: 3px;
+}
