@@ -1,14 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Welcom</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/welcome.css' %}">
 </head>
 <body>
-<div style="width: 400px; margin: 0 auto; margin-top: 20%;">
-    <h1 style="text-align: center">Welcome to my cloud</h1>
-    <div style="width: 150px; margin: 0 auto">
+<div class="welcome-block">
+    <h1>Welcome to my cloud</h1>
+    <div class="buttons">
         <a href="{% url 'login' %}" class="btn btn-success">Login</a>
         <a href="{% url 'register' %}" class="btn btn-success">Signup</a>
     </div>

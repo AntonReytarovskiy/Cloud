@@ -1,0 +1,14 @@
+.welcome-block {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.welcome-block h1 {
+    text-align: center;
+}
+
+.welcome-block .buttons {
+    width: 150px;
+    margin: 0 auto
+}
