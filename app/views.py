@@ -45,3 +45,12 @@ def download(request, filename):
         return HttpResponse(file, content_type='application/octet-stream')
     except FileNotFoundError:
         return render(request, 'FileNotFound.html')
+
+@login_required(login_url='/user/login')
+def remove(request, filename):
+    try:
+        dir = os.path.join('app/media', request.user.username)
+        os.remove(os.path.join(dir, filename))
+        return HttpResponseRedirect(reverse('catalog'))
+    except FileNotFoundError:
+        return render(request, 'FileNotFound.html')

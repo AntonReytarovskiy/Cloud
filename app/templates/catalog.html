@@ -6,28 +6,36 @@
     <link rel="stylesheet" href="{% static 'app/css/catalog.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="list col-md-12">
-        <ul>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>name</th>
-                    <th>size</th>
-                    <th>date</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for file in files %}
+    {% if files %}
+        <div class="list col-md-12">
+            <ul>
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td class="file-name">{{ file.name }}</td>
-                        <td class="file-size">{{ file.stat.st_size|filesizeformat }}</td>
-                        <td class="file-date">{{ file.stat.st_mtime|tchange }}</td>
-                        <td><a href="{% url 'download' file.name %}">Download</a></td>
+                        <th>name</th>
+                        <th>size</th>
+                        <th>date</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for file in files %}
+                        <tr>
+                            <td class="file-name">{{ file.name }}</td>
+                            <td class="file-size">{{ file.stat.st_size|filesizeformat }}</td>
+                            <td class="file-date">{{ file.stat.st_mtime|tchange }}</td>
+                            <td><a href="{% url 'download' file.name %}">Download</a></td>
+                            <td class="remove"><a href="{% url 'remove' file.name %}">Remove</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    {% else %}
+        <div class="no-files">
+            <h1>No files</h1>
+            <h3><a href="{% url 'upload' %}">Upload</a></h3>
+        </div>
+    {% endif %}
 {% endblock %}

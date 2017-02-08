@@ -9,3 +9,13 @@ th {
     color: crimson;
     font-size: 110%;
 }
+
+.list tr td .remove {
+    color: red;
+}
+
+.no-files {
+    width: 150px;
+    margin: 0 auto;
+    color: crimson;
+}

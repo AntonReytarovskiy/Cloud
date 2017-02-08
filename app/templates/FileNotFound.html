@@ -7,6 +7,8 @@
 {% block content %}
     <div>
         <h2 class="error-text">File not found</h2>
-        <a class="error-link" href="{% url 'upload' %}">upload new file</a>
+        <a href="{% url 'catalog' %}" class="error-link">Catalog</a>
+        <a class="error-link" href="{% url 'upload' %}">Upload new file</a>
+        </div>
     </div>
 {% endblock %}
