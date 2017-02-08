@@ -1,6 +1,7 @@
 import os
 from django.conf import settings
 from django import forms
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 
@@ -16,6 +17,8 @@ class RegisterForm(forms.Form):
     def clean(self):
         if self.cleaned_data.get('password') != self.cleaned_data.get('confirm_password'):
             raise ValidationError(message='Password not confirm', code='invalid')
+        if User.objects.get(username=self.cleaned_data.get('username')):
+            raise ValidationError(message='User exists', code='invalid')
 
     def createDir(self):
         path = 'app/media/' + self.cleaned_data.get('username')

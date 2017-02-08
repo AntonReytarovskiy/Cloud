@@ -3,10 +3,24 @@
 {% block title %}Upload{% endblock %}
 {% block content %}
     <div class="file-form col-md-2 col-md-offset-5">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
         <form enctype="multipart/form-data" method="post" action="{% url 'upload' %}">
             {% csrf_token %}
-            <label class="btn btn-default btn-file" for="{{ input.id_for_label }}">
-                Open file {{ input }}
+            <label class="btn btn-default btn-file" for="{{ form.file.id_for_label }}">
+                Open file {{ form.file }}
             </label>
             <input type="submit" class="btn btn-success" value="Upload">
         </form>

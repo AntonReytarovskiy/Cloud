@@ -23,6 +23,7 @@ def login(request):
             auth.login(request, user)
             return HttpResponseRedirect(reverse('default'))
         else:
+            form.add_error('username', 'User not found')
             return render(request, 'login.html', {'form': form})
 
     form = LoginForm()

@@ -26,12 +26,13 @@ def upload(request):
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                path = UploadForm.upload(form, request.FILES['file'], request.user.username)
+                UploadForm.upload(form, request.FILES['file'], request.user.username)
+                return HttpResponseRedirect(reverse('catalog'))
             except FileExistsError:
                 return render(request, 'fileError.html')
     else:
         form = UploadForm()
-    return render(request, 'upload.html', {'input': form['file']})
+    return render(request, 'upload.html', {'form': form})
 
 @login_required(login_url='/user/login')
 def download(request, filename):
