@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-
+from app.context_processors.user_memory import memory
 from app.forms import UploadForm
 
 
@@ -27,6 +27,7 @@ def catalog(request):
 def upload(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
+        form.max_size = memory(request).get('free_size')
         if form.is_valid():
             try:
                 UploadForm.upload(form, request.FILES['file'], request.user.username)
