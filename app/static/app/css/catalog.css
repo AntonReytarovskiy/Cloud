@@ -1,0 +1,11 @@
+td {
+    font-family: 'Slabo 27px', serif;
+    color: blue;
+    font-size: 120%;
+}
+
+th {
+    font-family: 'Slabo 27px', serif;
+    color: crimson;
+    font-size: 110%;
+}

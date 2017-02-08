@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load timestampFormat %}
 {% block title %}Catalog{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'app/css/catalog.css' %}">
+{% endblock %}
 {% block content %}
     <div class="list col-md-12">
         <ul>
@@ -13,12 +17,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% now "U" as current_date %}
                 {% for file in files %}
                     <tr>
-                        <td>{{ file.name }}</td>
-                        <td>{{ file.stat.st_size|filesizeformat }}</td>
-                        <td>{{ file.stat.st_mtime|tchange }}</td>
+                        <td class="file-name">{{ file.name }}</td>
+                        <td class="file-size">{{ file.stat.st_size|filesizeformat }}</td>
+                        <td class="file-date">{{ file.stat.st_mtime|tchange }}</td>
                         <td><a href="{% url 'download' file.name %}">Download</a></td>
                     </tr>
                 {% endfor %}

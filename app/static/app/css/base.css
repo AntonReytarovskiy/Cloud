@@ -22,6 +22,12 @@
     color: black;
 }
 
+.navbar a {
+    font-family: 'Slabo 27px', serif;
+    font-size: 110%;
+}
+
 a i {
     margin-right: 3px;
+    color: crimson;
 }

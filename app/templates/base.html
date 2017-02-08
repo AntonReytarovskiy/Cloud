@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
     {% block head %}{% endblock %}
 </head>
@@ -17,11 +18,16 @@
         <ul class="nav navbar-nav">
             {% url 'upload' as upload_url %}
             {% url 'catalog' as catalog_url %}
-            <li {% if request.path == catalog_url %}class="active"{% endif %}><a href="{% url 'catalog' %}"><i class="glyphicon glyphicon-folder-open"></i> Catalog</a></li>
-            <li {% if request.path == upload_url %}class="active"{% endif %}><a href="{% url 'upload' %}"><i class="glyphicon glyphicon-cloud-upload"></i>Upload</a></li>
+            <li {% if request.path == catalog_url %}class="active"{% endif %}><a href="{% url 'catalog' %}"><i
+                    class="glyphicon glyphicon-folder-open"></i> Catalog</a></li>
+            <li {% if request.path == upload_url %}class="active"{% endif %}><a href="{% url 'upload' %}"><i
+                    class="glyphicon glyphicon-cloud-upload"></i>Upload</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> ({{ request.user.username }})Logout</a></li>
+            <li>
+                <a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i>
+                ({{ request.user.username }}) logout</a>
+            </li>
         </ul>
     </div>
 </nav>
