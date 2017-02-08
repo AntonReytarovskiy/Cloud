@@ -25,6 +25,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
+                <p class="memory"><span class="title">Free:</span> {{ free_size|filesizeformat }} / <span class="title">Total:</span> {{ total_size|filesizeformat }}</p>
+            </li>
+            <li>
                 <a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i>
                 ({{ request.user.username }}) logout</a>
             </li>
