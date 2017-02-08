@@ -17,8 +17,11 @@ def default(request):
 @login_required(login_url='/user/login')
 def catalog(request):
     dir = os.path.join('app/media', request.user.username)
-    files = os.listdir(dir)
-    return render(request, 'catalog.html', {'files': files, 'dir': dir})
+    files = []
+    for entry in os.scandir(path=dir):
+        files.append(entry)
+
+    return render(request, 'catalog.html', {'files': files})
 
 @login_required(login_url='/user/login')
 def upload(request):
