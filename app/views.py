@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from app.context_processors.user_memory import memory
+from app.context_processors.cloud import memory
 from app.forms import UploadForm
 
 

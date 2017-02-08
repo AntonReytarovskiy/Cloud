@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
-    <link rel="shortcut icon" href="{% static 'app/images/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'app/images/favicon.png' %}"/>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -26,11 +26,15 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <p class="memory"><span class="title">Free:</span> {{ free_size|filesizeformat }} / <span class="title">Total:</span> {{ total_size|filesizeformat }}</p>
+                <p class="count stat"><span class="title">Files count:</span> {{ files_count }}</p>
+            </li>
+            <li>
+                <p class="memory stat"><span class="title">Free:</span> {{ free_size|filesizeformat }} / <span
+                        class="title">Total:</span> {{ total_size|filesizeformat }}</p>
             </li>
             <li>
                 <a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i>
-                ({{ request.user.username }}) logout</a>
+                    ({{ request.user.username }}) logout</a>
             </li>
         </ul>
     </div>

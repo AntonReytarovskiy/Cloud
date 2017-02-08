@@ -32,13 +32,13 @@ a i {
     color: crimson;
 }
 
-.memory {
+.stat {
     font-size: 110%;
     margin-top: 13px;
     margin-right: 20px;
 }
 
-.memory .title {
+.stat .title {
     color: crimson;
     font-size: 100%;
 }

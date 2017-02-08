@@ -1,4 +1,3 @@
-from django.template.context_processors import request
 import os
 
 def dir_size(path):
@@ -10,7 +9,7 @@ def dir_size(path):
     return total_size
 
 def memory(request):
-    if (not request.user):
+    if not request.user:
         return {}
     else:
         dir = os.path.join('app/media', request.user.username)
@@ -18,3 +17,10 @@ def memory(request):
         used_size = dir_size(dir)
         free_size = total_size - used_size
         return {'total_size': total_size, 'used_size': used_size, 'free_size': free_size}
+
+def files_count(request):
+    if not request.user:
+        return {}
+    else:
+        dir = os.path.join('app/media', request.user.username)
+        return {'files_count': len(os.listdir(dir))}
