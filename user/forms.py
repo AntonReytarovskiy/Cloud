@@ -17,7 +17,7 @@ class RegisterForm(forms.Form):
     def clean(self):
         if self.cleaned_data.get('password') != self.cleaned_data.get('confirm_password'):
             raise ValidationError(message='Password not confirm', code='invalid')
-        if User.objects.get(username=self.cleaned_data.get('username')):
+        if User.objects.filter(username=self.cleaned_data.get('username')).first():
             raise ValidationError(message='User exists', code='invalid')
 
     def createDir(self):
